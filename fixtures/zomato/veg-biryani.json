@@ -1,0 +1,266 @@
+{
+ "_sample": true,
+ "note": "SAMPLE DATA: snapshot of live Zomato results taken 2026-11-14 near Sector 48, Gurugram. Stale; for PLATFORM_ZOMATO=mock offline mode only.",
+ "results": [
+  {
+   "restaurant": "Biryani Blues",
+   "item": "Veg Dum Biryani Bowl",
+   "price": 99,
+   "rating": null,
+   "etaMinutes": 25,
+   "url": "https://www.zomato.com/order/306805",
+   "offerText": "Flat ₹60 OFF"
+  },
+  {
+   "restaurant": "Charcoal Eats - Biryani & Beyond",
+   "item": "Veg Dum Mini Biryani Bowl",
+   "price": 229,
+   "rating": null,
+   "etaMinutes": 30,
+   "url": "https://www.zomato.com/order/22063645",
+   "offerText": "50% OFF up to ₹100"
+  },
+  {
+   "restaurant": "Shama Chicken Corner",
+   "item": "Veg Biryani",
+   "price": 69,
+   "rating": null,
+   "etaMinutes": 25,
+   "url": "https://www.zomato.com/order/17977749",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "70% OFF up to ₹140"
+  },
+  {
+   "restaurant": "Baba Kebab's Express",
+   "item": "Veg Biryani",
+   "price": 179,
+   "rating": null,
+   "etaMinutes": 40,
+   "url": "https://www.zomato.com/order/22799375",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "Flat ₹120 OFF"
+  },
+  {
+   "restaurant": "Desi Junction - Meals & Curries",
+   "item": "Veg Biryani",
+   "price": 199,
+   "rating": null,
+   "etaMinutes": 30,
+   "url": "https://www.zomato.com/order/22720083",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "70% OFF up to ₹140"
+  },
+  {
+   "restaurant": "Charcoal Eats - Biryani & Beyond",
+   "item": "Charcoal Veg Mini Biryani Bowl",
+   "price": 229,
+   "rating": null,
+   "etaMinutes": 30,
+   "url": "https://www.zomato.com/order/22063645",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "50% OFF up to ₹100"
+  },
+  {
+   "restaurant": "Charcoal Eats - Biryani & Beyond",
+   "item": "Lucknowi Veg Mini Biryani Bowl",
+   "price": 229,
+   "rating": null,
+   "etaMinutes": 30,
+   "url": "https://www.zomato.com/order/22063645",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "50% OFF up to ₹100"
+  },
+  {
+   "restaurant": "Biryani Badshah",
+   "item": "Veg Dum Biryani Bowl - 500ml",
+   "price": 249,
+   "rating": null,
+   "etaMinutes": 40,
+   "url": "https://www.zomato.com/order/19896947",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "50% OFF up to ₹100"
+  },
+  {
+   "restaurant": "Charcoal Eats - Biryani & Beyond",
+   "item": "Hyderabadi Veg Dum Biryani",
+   "price": 249,
+   "rating": null,
+   "etaMinutes": 30,
+   "url": "https://www.zomato.com/order/22063645",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "50% OFF up to ₹100"
+  },
+  {
+   "restaurant": "Charcoal Eats - Biryani & Beyond",
+   "item": "Muradabadi Veg Mini Biryani Bowl",
+   "price": 259,
+   "rating": null,
+   "etaMinutes": 30,
+   "url": "https://www.zomato.com/order/22063645",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "50% OFF up to ₹100"
+  },
+  {
+   "restaurant": "Biryani Blues",
+   "item": "Veg Biryani Bowl Combo",
+   "price": 329,
+   "rating": null,
+   "etaMinutes": 25,
+   "url": "https://www.zomato.com/order/306805",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "Flat ₹60 OFF"
+  },
+  {
+   "restaurant": "Biryani Blues",
+   "item": "Hyderabadi Veg Dum Biryani",
+   "price": 329,
+   "rating": null,
+   "etaMinutes": 25,
+   "url": "https://www.zomato.com/order/306805",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "Flat ₹60 OFF"
+  },
+  {
+   "restaurant": "Charcoal Eats - Biryani & Beyond",
+   "item": "Muradabadi Veg Biryani Bowl",
+   "price": 329,
+   "rating": null,
+   "etaMinutes": 30,
+   "url": "https://www.zomato.com/order/22063645",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "50% OFF up to ₹100"
+  },
+  {
+   "restaurant": "Bikkgane Biryani",
+   "item": "Andhra Special Veg Biryani Bowl - 500ml",
+   "price": 329,
+   "rating": null,
+   "etaMinutes": 40,
+   "url": "https://www.zomato.com/order/19894306",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": null
+  },
+  {
+   "restaurant": "Bikkgane Biryani",
+   "item": "Veg Dum Hyderabadi Biryani",
+   "price": 339,
+   "rating": null,
+   "etaMinutes": 40,
+   "url": "https://www.zomato.com/order/19894306",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": null
+  },
+  {
+   "restaurant": "Bikkgane Biryani",
+   "item": "Veg Dum Biryani Bowl - 500ml",
+   "price": 339,
+   "rating": null,
+   "etaMinutes": 40,
+   "url": "https://www.zomato.com/order/19894306",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": null
+  },
+  {
+   "restaurant": "Biryani Badshah",
+   "item": "Veg Dum Hyderabadi Biryani - 750ml",
+   "price": 349,
+   "rating": null,
+   "etaMinutes": 40,
+   "url": "https://www.zomato.com/order/19896947",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "50% OFF up to ₹100"
+  },
+  {
+   "restaurant": "Charcoal Eats - Biryani & Beyond",
+   "item": "Hyderabadi Veg Biryani Bowl",
+   "price": 349,
+   "rating": null,
+   "etaMinutes": 30,
+   "url": "https://www.zomato.com/order/22063645",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "50% OFF up to ₹100"
+  },
+  {
+   "restaurant": "Charcoal Eats - Biryani & Beyond",
+   "item": "Veg Dum Biryani Bowl",
+   "price": 369,
+   "rating": null,
+   "etaMinutes": 30,
+   "url": "https://www.zomato.com/order/22063645",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "50% OFF up to ₹100"
+  },
+  {
+   "restaurant": "Charcoal Eats - Biryani & Beyond",
+   "item": "Charcoal Veg Biryani Bowl",
+   "price": 389,
+   "rating": null,
+   "etaMinutes": 30,
+   "url": "https://www.zomato.com/order/22063645",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "50% OFF up to ₹100"
+  },
+  {
+   "restaurant": "Biryani Blues",
+   "item": "Veg Biryani Bowls (Party Pack)",
+   "price": 399,
+   "rating": null,
+   "etaMinutes": 25,
+   "url": "https://www.zomato.com/order/306805",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "Flat ₹60 OFF"
+  },
+  {
+   "restaurant": "Biryani Blues",
+   "item": "Veg Dum Biryani Handi",
+   "price": 429,
+   "rating": null,
+   "etaMinutes": 25,
+   "url": "https://www.zomato.com/order/306805",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "Flat ₹60 OFF"
+  },
+  {
+   "restaurant": "Bikkgane Biryani",
+   "item": "Handi Veg Dum Hyderabadi Biryani",
+   "price": 509,
+   "rating": null,
+   "etaMinutes": 40,
+   "url": "https://www.zomato.com/order/19894306",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": null
+  },
+  {
+   "restaurant": "Charcoal Eats - Biryani & Beyond",
+   "item": "Lucknowi Veg Biryani Bowl",
+   "price": 689,
+   "rating": null,
+   "etaMinutes": 30,
+   "url": "https://www.zomato.com/order/22063645",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "50% OFF up to ₹100"
+  }
+ ]
+}

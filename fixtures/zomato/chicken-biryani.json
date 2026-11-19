@@ -1,0 +1,187 @@
+{
+ "_sample": true,
+ "note": "SAMPLE DATA: snapshot of live Zomato results taken 2026-11-14 near Sector 48, Gurugram. Stale; for PLATFORM_ZOMATO=mock offline mode only.",
+ "results": [
+  {
+   "restaurant": "Shama Chicken Corner",
+   "item": "Chicken Biryani",
+   "price": 109,
+   "rating": null,
+   "etaMinutes": 25,
+   "url": "https://www.zomato.com/order/17977749",
+   "offerText": "70% OFF up to ₹140"
+  },
+  {
+   "restaurant": "Shama Chicken Corner",
+   "item": "Chicken Masala Biryani",
+   "price": 109,
+   "rating": null,
+   "etaMinutes": 25,
+   "url": "https://www.zomato.com/order/17977749",
+   "offerText": "70% OFF up to ₹140"
+  },
+  {
+   "restaurant": "A - One Muradabadi Chicken Biryani Corner",
+   "item": "Chicken Muradabadi Biryani",
+   "price": 140,
+   "rating": null,
+   "etaMinutes": null,
+   "url": "https://www.zomato.com/order/20663537",
+   "offerText": null
+  },
+  {
+   "restaurant": "A - One Muradabadi Chicken Biryani Corner",
+   "item": "Chicken Hyderabadi Biryani",
+   "price": 140,
+   "rating": null,
+   "etaMinutes": null,
+   "url": "https://www.zomato.com/order/20663537",
+   "isVeg": false,
+   "inStock": true,
+   "offerText": null
+  },
+  {
+   "restaurant": "Veer Ji Malai Chaap Wale",
+   "item": "Matka Veg Chicken Biryani",
+   "price": 209,
+   "rating": null,
+   "etaMinutes": 50,
+   "url": "https://www.zomato.com/order/20865757",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "Flat ₹60 OFF"
+  },
+  {
+   "restaurant": "BOX8 - Desi Meals",
+   "item": "Chicken Tangdi Dum Biryani Thali",
+   "price": 299,
+   "rating": null,
+   "etaMinutes": 25,
+   "url": "https://www.zomato.com/order/20559910",
+   "isVeg": false,
+   "inStock": true,
+   "offerText": "Flat ₹60 OFF"
+  },
+  {
+   "restaurant": "BOX8 - Desi Meals",
+   "item": "Chicken Dum Biryani Thali",
+   "price": 329,
+   "rating": null,
+   "etaMinutes": 25,
+   "url": "https://www.zomato.com/order/20559910",
+   "isVeg": false,
+   "inStock": true,
+   "offerText": "Flat ₹60 OFF"
+  },
+  {
+   "restaurant": "BOX8 - Desi Meals",
+   "item": "Chicken Tikka Dum Biryani Thali",
+   "price": 329,
+   "rating": null,
+   "etaMinutes": 25,
+   "url": "https://www.zomato.com/order/20559910",
+   "isVeg": false,
+   "inStock": true,
+   "offerText": "Flat ₹60 OFF"
+  },
+  {
+   "restaurant": "ZAZA Mughal Biryani",
+   "item": "Tangdi Chicken Value Biryani Bowl",
+   "price": 339,
+   "rating": null,
+   "etaMinutes": 30,
+   "url": "https://www.zomato.com/order/22897680",
+   "isVeg": false,
+   "inStock": true,
+   "offerText": "Flat ₹60 OFF"
+  },
+  {
+   "restaurant": "ZAZA Mughal Biryani",
+   "item": "Boneless Butter Chicken Mughal Biryani",
+   "price": 349,
+   "rating": null,
+   "etaMinutes": 30,
+   "url": "https://www.zomato.com/order/22897680",
+   "isVeg": false,
+   "inStock": true,
+   "offerText": "Flat ₹60 OFF"
+  },
+  {
+   "restaurant": "ZAZA Mughal Biryani",
+   "item": "Boneless Chicken Tikka Mughal Biryani",
+   "price": 349,
+   "rating": null,
+   "etaMinutes": 30,
+   "url": "https://www.zomato.com/order/22897680",
+   "isVeg": false,
+   "inStock": true,
+   "offerText": "Flat ₹60 OFF"
+  },
+  {
+   "restaurant": "ZAZA Mughal Biryani",
+   "item": "Boneless Dhaba Chicken Mughal Biryani",
+   "price": 349,
+   "rating": null,
+   "etaMinutes": 30,
+   "url": "https://www.zomato.com/order/22897680",
+   "isVeg": false,
+   "inStock": true,
+   "offerText": "Flat ₹60 OFF"
+  },
+  {
+   "restaurant": "ZAZA Mughal Biryani",
+   "item": "Chicken Tandoori Biryani Bowl + Lemonade",
+   "price": 358,
+   "rating": null,
+   "etaMinutes": 30,
+   "url": "https://www.zomato.com/order/22897680",
+   "isVeg": false,
+   "inStock": true,
+   "offerText": "Flat ₹60 OFF"
+  },
+  {
+   "restaurant": "ZAZA Mughal Biryani",
+   "item": "Double Chicken Tangdi Mughal Biryani",
+   "price": 379,
+   "rating": null,
+   "etaMinutes": 30,
+   "url": "https://www.zomato.com/order/22897680",
+   "isVeg": false,
+   "inStock": true,
+   "offerText": "Flat ₹60 OFF"
+  },
+  {
+   "restaurant": "ZAZA Mughal Biryani",
+   "item": "Boneless Chicken Overload Mughal Biryani",
+   "price": 399,
+   "rating": null,
+   "etaMinutes": 30,
+   "url": "https://www.zomato.com/order/22897680",
+   "isVeg": false,
+   "inStock": true,
+   "offerText": "Flat ₹60 OFF"
+  },
+  {
+   "restaurant": "ZAZA Mughal Biryani",
+   "item": "2 Chicken Tandoori Biryani Bowls",
+   "price": 599,
+   "rating": null,
+   "etaMinutes": 30,
+   "url": "https://www.zomato.com/order/22897680",
+   "isVeg": false,
+   "inStock": true,
+   "offerText": "Flat ₹60 OFF"
+  },
+  {
+   "restaurant": "ZAZA Mughal Biryani",
+   "item": "Any 2 Half KG Boneless Chicken Biryanis Combo",
+   "price": 879,
+   "rating": null,
+   "etaMinutes": 30,
+   "url": "https://www.zomato.com/order/22897680",
+   "isVeg": false,
+   "inStock": true,
+   "offerText": "Flat ₹60 OFF"
+  }
+ ]
+}

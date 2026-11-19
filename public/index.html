@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BiteWise · Eat Smart. Spend Less.</title>
+<meta name="description" content="BiteWise compares the same dish at the same restaurant on Swiggy and Zomato, side by side.">
+<meta name="theme-color" content="#faf7f2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='88'>🍽️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400..700,0..100;1,9..144,400..700,0..100&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* warm ivory canvas, white surfaces, hairline borders */
+    --bg: #faf7f2;
+    --surface: #ffffff;
+    --surface-2: #f8f4ee;
+    --line: #ece4da;
+    --line-soft: #f3ede6;
+    --ink: #2b2420;
+    --ink-2: #4b413a;
+    --muted: #8a7d72;
+    --faint: #b9ada2;
+
+    /* one warm accent, softened platform colours, sage for savings */
+    --accent: #c8643c;
+    --accent-ink: #a94f2d;
+    --accent-soft: #fbeee6;
+    --accent-line: #f1d3c2;
+    --swiggy: #ef7d2b;
+    --swiggy-ink: #b8591a;
+    --zomato: #dc4a5c;
+    --zomato-ink: #ae3445;
+    --save: #2f7d5c;
+    --save-soft: #eaf5ef;
+    --save-line: #c4e2d1;
+    --star: #d9a13b;
+    --veg: #2f9a5a;
+    --nonveg: #c0392b;
+
+    --warn-bg: #fff8ea; --warn-line: #f2e0b9; --warn-ink: #85581a;
+    --err-bg: #fdf2f2;  --err-line: #f2d4d7;  --err-ink: #9a2f3d;
+
+    --radius: 20px;
+    --radius-sm: 12px;
+    --shadow-sm: 0 1px 2px rgba(74, 52, 30, .05), 0 2px 8px rgba(74, 52, 30, .04);
+    --shadow: 0 1px 2px rgba(74, 52, 30, .04), 0 16px 36px -14px rgba(74, 52, 30, .16);
+    --serif: "Fraunces", Georgia, "Times New Roman", serif;
+    --sans: "DM Sans", -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { color-scheme: light; }
+  body {
+    margin: 0; min-height: 100vh; background: var(--bg); color: var(--ink);
+    font: 15px/1.6 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+  /* soft, still colour washes behind everything */
+  .wash { position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background:
+      radial-gradient(760px 460px at 8% -6%, #fde6d6 0%, transparent 62%),
+      radial-gradient(700px 440px at 96% 2%, #fbe2e6 0%, transparent 60%),
+      radial-gradient(900px 560px at 50% 112%, #e5f0e8 0%, transparent 62%);
+  }
+  .serif { font-family: var(--serif); font-variation-settings: "SOFT" 100; }
+
+  main { max-width: 1080px; margin: 0 auto; padding: 52px 16px 64px; }
+
+  /* ---------- hero ---------- */
+  .badges { display: flex; gap: 8px; justify-content: center; margin-bottom: 22px; flex-wrap: wrap; }
+  .badge { display: inline-flex; align-items: center; gap: 7px; padding: 5px 13px; border-radius: 999px;
+           background: rgba(255,255,255,.7); border: 1px solid var(--line); font-size: .76rem; color: var(--muted); }
+  .dot { width: 7px; height: 7px; border-radius: 50%; }
+  .dot.sw { background: var(--swiggy); } .dot.zo { background: var(--zomato); }
+  .badge svg { width: 12px; height: 12px; }
+  h1 {
+    margin: 0; text-align: center; font-family: var(--serif); font-weight: 600; line-height: 1.05;
+    font-size: clamp(2.8rem, 7.5vw, 4.4rem); letter-spacing: -.025em; color: var(--ink);
+    font-variation-settings: "SOFT" 100, "opsz" 144;
+  }
+  h1 em { font-style: italic; font-weight: 500; color: var(--accent); margin-left: -.04em; }
+  .tagline { text-align: center; margin: 12px 0 8px; font-family: var(--serif); font-variation-settings: "SOFT" 100;
+             font-size: clamp(1.2rem, 3vw, 1.5rem); font-weight: 400; color: var(--ink-2); }
+  .tagline em { font-style: italic; color: var(--save); }
+  .subline { text-align: center; color: var(--muted); margin: 0 0 34px; font-size: .92rem; }
+  .subline .sw { color: var(--swiggy-ink); font-weight: 600; }
+  .subline .zo { color: var(--zomato-ink); font-weight: 600; }
+
+  /* ---------- search ---------- */
+  form { display: flex; gap: 10px; max-width: 660px; margin: 0 auto 14px; }
+  .searchwrap { position: relative; flex: 1; }
+  .searchwrap input {
+    width: 100%; padding: 16px 22px 16px 50px; font: inherit; font-size: 1.04rem; color: var(--ink);
+    background: var(--surface); border: 1px solid var(--line); border-radius: 999px; outline: none;
+    box-shadow: var(--shadow); transition: border-color .25s, box-shadow .25s;
+  }
+  .searchwrap input:focus { border-color: var(--accent-line); box-shadow: var(--shadow), 0 0 0 3px rgba(200, 100, 60, .09); }
+  .searchwrap input::placeholder { color: var(--faint); }
+  .searchwrap svg { position: absolute; left: 19px; top: 50%; translate: 0 -50%; width: 18px; height: 18px; color: var(--faint); }
+  button.cta {
+    padding: 0 28px; font: inherit; font-size: 1rem; font-weight: 600; color: #fffaf5; cursor: pointer;
+    border: 0; border-radius: 999px; background: var(--accent);
+    box-shadow: 0 8px 20px -8px rgba(200, 100, 60, .55); transition: background .2s, transform .2s, box-shadow .2s;
+  }
+  button.cta:hover { background: var(--accent-ink); transform: translateY(-1px); box-shadow: 0 10px 24px -8px rgba(200, 100, 60, .6); }
+  button.cta:active { transform: translateY(0); }
+  button.cta:disabled { opacity: .6; transform: none; cursor: wait; }
+  .hints { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 26px; }
+  .hint { font: inherit; font-size: .8rem; color: var(--muted); background: rgba(255,255,255,.6); border: 1px solid var(--line);
+          border-radius: 999px; padding: 5px 14px; cursor: pointer; transition: color .2s, border-color .2s, background .2s; }
+  .hint:hover { color: var(--accent-ink); border-color: var(--accent-line); background: var(--accent-soft); }
+  .pill:focus-visible, .hint:focus-visible, button.cta:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* ---------- status / banners ---------- */
+  #status { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 4px 8px;
+            color: var(--muted); min-height: 24px; margin: 6px 0 18px; font-size: .84rem; text-align: center; }
+  #status svg { width: 14px; height: 14px; color: var(--accent); }
+  #status .pl { font-size: .68rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; }
+  #status .pl.sw { color: var(--swiggy-ink); } #status .pl.zo { color: var(--zomato-ink); }
+  #status .sep { color: var(--faint); }
+  #status .conf { color: var(--save); background: var(--save-soft); border-radius: 999px; padding: 1px 9px; font-size: .76rem; }
+  .banner { padding: 13px 18px; border-radius: 16px; margin: 12px 0; font-size: .88rem; line-height: 1.55;
+            border: 1px solid; animation: rise .5s ease both; }
+  .banner strong { font-weight: 600; }
+  .banner.sample { background: var(--warn-bg); color: var(--warn-ink); border-color: var(--warn-line); }
+  .banner.error { background: var(--err-bg); color: var(--err-ink); border-color: var(--err-line); }
+  .banner .aside { opacity: .75; }
+  code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: .84em; background: rgba(255,255,255,.8);
+         border: 1px solid currentColor; border-color: rgba(0,0,0,.08); padding: 1px 6px; border-radius: 6px; }
+  .empty { text-align: center; color: var(--muted); margin: 38px 0; font-family: var(--serif); font-style: italic;
+           font-variation-settings: "SOFT" 100; font-size: 1.08rem; }
+
+  /* ---------- scoreboard ---------- */
+  .score { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 26px 0 8px; }
+  .stat { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px;
+          box-shadow: var(--shadow-sm); animation: rise .6s ease both; }
+  .stat:nth-child(2) { animation-delay: .06s; } .stat:nth-child(3) { animation-delay: .12s; } .stat:nth-child(4) { animation-delay: .18s; }
+  .stat .n { font-family: var(--serif); font-variation-settings: "SOFT" 100, "opsz" 72; font-size: 2.1rem; font-weight: 500;
+             line-height: 1.05; color: var(--ink); font-variant-numeric: lining-nums tabular-nums; }
+  .stat .l { font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: .09em; margin-top: 6px; }
+  .stat.sw .n { color: var(--swiggy-ink); } .stat.zo .n { color: var(--zomato-ink); } .stat.gr .n { color: var(--save); }
+
+  /* ---------- sort / filter toolbar ---------- */
+  .toolbar { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: space-between; margin: 24px 0 0; }
+  .seg { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+  .seglabel { font-size: .7rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-right: 6px; }
+  .pill { display: inline-flex; align-items: center; font: inherit; font-size: .82rem; color: var(--ink-2); background: var(--surface);
+          border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; cursor: pointer;
+          transition: color .2s, border-color .2s, background .2s; }
+  .pill:hover { border-color: var(--accent-line); color: var(--accent-ink); }
+  .pill[aria-pressed="true"] { color: var(--accent-ink); background: var(--accent-soft); border-color: var(--accent-line); font-weight: 600; }
+  .pill.veg[aria-pressed="true"] { color: var(--save); background: var(--save-soft); border-color: var(--save-line); }
+  .filternote { font-size: .78rem; color: var(--muted); margin: 8px 0 0; }
+
+  /* ---------- sections & tables ---------- */
+  h2 { font-family: var(--serif); font-variation-settings: "SOFT" 100; font-weight: 500; font-size: 1.4rem;
+       letter-spacing: -.01em; margin: 36px 0 2px; display: flex; align-items: center; gap: 10px; color: var(--ink); }
+  h2 .hdot { width: 9px; height: 9px; border-radius: 50%; }
+  h2 .count { font-family: var(--sans); font-size: .74rem; font-weight: 600; color: var(--muted); background: var(--surface);
+              border: 1px solid var(--line); padding: 1px 9px; border-radius: 999px; }
+  .note { font-size: .82rem; color: var(--muted); margin: 2px 0 14px; }
+  .tablewrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line);
+               background: var(--surface); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; min-width: 720px; }
+  th, td { text-align: left; padding: 14px 16px; border-bottom: 1px solid var(--line-soft); font-size: .9rem; vertical-align: top; }
+  tr:last-child td { border-bottom: 0; }
+  th { font-size: .68rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); font-weight: 600;
+       background: #fcfaf7; border-bottom: 1px solid var(--line); padding-top: 12px; padding-bottom: 12px; }
+  .pdot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 7px; vertical-align: 1px; }
+  tbody tr { animation: rise .45s ease both; transition: background .2s; }
+  tbody tr:hover { background: #fdfaf6; }
+  @keyframes rise { from { opacity: 0; transform: translateY(6px); } }
+
+  /* veg mark stays beside the name; long names wrap next to it, not below it */
+  .dname { font-weight: 600; color: var(--ink); display: flex; align-items: flex-start; }
+  .dname .vdot { margin-top: 5px; }
+  .dname .tag { flex: none; margin-top: 3px; }
+  .rname { font-size: .8rem; color: var(--muted); margin-top: 2px; }
+  .rname a { color: var(--muted); }
+  .rname a:hover { color: var(--accent-ink); }
+  .subitem { display: block; font-size: .72rem; color: var(--faint); margin-top: 4px; }
+  .pcell { min-width: 150px; }
+  .mlabel { display: none; align-items: center; font-size: .66rem; font-weight: 600; text-transform: uppercase; letter-spacing: .09em;
+            color: var(--muted); margin-bottom: 6px; }
+  .cheaper { margin-left: auto; color: var(--save); }
+  .pprice { display: inline-block; font-weight: 600; font-size: 1.02rem; color: var(--ink); white-space: nowrap;
+            font-variant-numeric: tabular-nums; }
+  .pcell.cheap .pprice { color: var(--save); background: var(--save-soft); padding: 1px 10px; border-radius: 999px;
+                         box-shadow: inset 0 0 0 1px var(--save-line); }
+  .offer { display: block; width: fit-content; font-size: .72rem; font-weight: 500; color: var(--accent-ink);
+           background: var(--accent-soft); padding: 1px 8px; border-radius: 6px; margin-top: 6px; }
+  .meta { display: block; font-size: .78rem; color: var(--muted); margin-top: 5px; white-space: nowrap; }
+  .star { color: var(--star); }
+  .open { display: block; width: fit-content; font-size: .76rem; font-weight: 500; margin-top: 5px; }
+  .tag { display: inline-block; font-size: .62rem; font-weight: 600; text-transform: uppercase; letter-spacing: .06em;
+         padding: 1px 8px; border-radius: 6px; background: var(--err-bg); color: var(--err-ink); margin-left: 8px; }
+  .chip { display: inline-block; font-size: .76rem; font-weight: 600; padding: 4px 11px; border-radius: 999px; white-space: nowrap;
+          font-variant-numeric: tabular-nums; }
+  .chip.save { background: var(--save-soft); color: var(--save); box-shadow: inset 0 0 0 1px var(--save-line); }
+  .chip.same { background: var(--surface-2); color: var(--muted); box-shadow: inset 0 0 0 1px var(--line); }
+  .meter { width: 56px; height: 4px; border-radius: 99px; background: var(--line-soft); overflow: hidden; }
+  .meter i { display: block; height: 100%; border-radius: 99px; background: linear-gradient(90deg, #f0c3a2, #7cbf9a);
+             animation: fill .9s ease both; }
+  @keyframes fill { from { width: 0 !important; } }
+  .confcell { display: flex; align-items: center; gap: 8px; font-size: .76rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .conflabel { display: none; text-transform: uppercase; letter-spacing: .09em; font-size: .64rem; font-weight: 600; }
+  /* Indian veg / non-veg marks */
+  .vdot { display: inline-block; flex: none; width: 11px; height: 11px; border: 1.5px solid; border-radius: 2px; margin-right: 8px; position: relative; }
+  .vdot::after { content: ""; position: absolute; inset: 2px; border-radius: 50%; background: currentColor; }
+  .vdot.veg { color: var(--veg); } .vdot.nonveg { color: var(--nonveg); }
+  a { color: var(--accent-ink); text-decoration: none; }
+  a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+  /* re-renders from sorting/filtering shouldn't replay the entrance animations */
+  .still tbody tr, .still .stat, .still .banner, .still .meter i { animation: none; }
+
+  /* ---------- loading ---------- */
+  .cooking { display: flex; justify-content: center; align-items: center; gap: 10px; color: var(--muted); font-size: .9rem; margin-top: 18px; }
+  .spinner { width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--line); border-top-color: var(--accent);
+             animation: spin .9s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .skel { border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface); box-shadow: var(--shadow-sm);
+          padding: 12px 16px; margin-top: 22px; }
+  .skrow { height: 40px; border-radius: 10px; margin: 8px 0;
+           background: linear-gradient(100deg, #f6f1eb 38%, #fbf8f4 50%, #f6f1eb 62%);
+           background-size: 220% 100%; animation: skimmer 1.4s linear infinite; }
+  @keyframes skimmer { to { background-position: -220% 0; } }
+
+  footer { margin-top: 52px; padding-top: 22px; border-top: 1px solid var(--line); text-align: center;
+           font-size: .78rem; color: var(--muted); line-height: 1.8; }
+  footer b.sw { color: var(--swiggy-ink); font-weight: 600; } footer b.zo { color: var(--zomato-ink); font-weight: 600; }
+  footer .brand { font-family: var(--serif); font-variation-settings: "SOFT" 100; font-size: .95rem; color: var(--ink); font-weight: 600; }
+  footer .brand em { color: var(--accent); font-weight: 500; margin-left: -.04em; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .001s !important; animation-iteration-count: 1 !important; transition: none !important; }
+  }
+
+  /* ---------- phones: every table becomes a stack of cards ---------- */
+  @media (max-width: 720px) {
+    main { padding-top: 40px; }
+    /* one address per line instead of a ragged wrap */
+    #status { flex-direction: column; gap: 3px; }
+    #status > svg, #status .sep { display: none; }
+    #status .conf { margin-top: 4px; }
+    .tablewrap { overflow: visible; border: 0; background: none; box-shadow: none; border-radius: 0; }
+    table, tbody { display: block; min-width: 0; }
+    thead { display: none; }
+    tbody tr { display: grid; gap: 12px; margin-bottom: 12px; padding: 16px; border-radius: var(--radius);
+               background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow-sm); }
+    tbody tr:hover { background: var(--surface); }
+    td { display: block; padding: 0; border: 0; min-width: 0; }
+    tr:last-child td { border: 0; }
+
+    /* head-to-head card: dish on top, the two apps side by side, saving + match below */
+    table.cmp tbody tr { grid-template-columns: 1fr 1fr; grid-template-areas: "dish dish" "sw zo" "save match"; }
+    .cmp .dishcell { grid-area: dish; }
+    .cmp .pcell.sw { grid-area: sw; } .cmp .pcell.zo { grid-area: zo; }
+    .cmp .savecell { grid-area: save; align-self: center; }
+    .cmp .matchcell { grid-area: match; align-self: center; justify-self: end; }
+    .cmp .pcell { padding: 11px 12px; border-radius: var(--radius-sm); background: var(--surface-2); border: 1px solid var(--line-soft); }
+    .cmp .pcell.cheap { background: var(--save-soft); border-color: var(--save-line); }
+    .mlabel { display: flex; }
+    .conflabel { display: inline; }
+    .meta { white-space: normal; }
+
+    /* single-platform card: dish + price on top, rating + ETA below */
+    table.only tbody tr { grid-template-columns: 1fr auto; grid-template-areas: "dish price" "rate eta"; gap: 6px 12px; }
+    .only .dishcell { grid-area: dish; }
+    .only .pcell { grid-area: price; min-width: 0; text-align: right; }
+    .only .pcell .offer { margin-left: auto; }
+    .only .rate { grid-area: rate; color: var(--muted); font-size: .82rem; }
+    .only .eta { grid-area: eta; color: var(--muted); font-size: .82rem; text-align: right; }
+    .na { display: none; }
+  }
+  @media (max-width: 640px) {
+    form { flex-direction: column; }
+    button.cta { padding: 14px; }
+  }
+</style>
+</head>
+<body>
+  <div class="wash"></div>
+
+  <main>
+    <div class="badges">
+      <span class="badge"><span class="dot sw"></span>Powered by Swiggy</span>
+      <span class="badge"><span class="dot zo"></span>Powered by Zomato</span>
+      <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Read-only</span>
+    </div>
+    <h1>Bite<em>Wise</em></h1>
+    <p class="tagline">Eat Smart. <em>Spend Less.</em></p>
+    <p class="subline">Same dish, same restaurant: <span class="sw">Swiggy</span> vs <span class="zo">Zomato</span> menu prices, side by side.</p>
+
+    <form id="form">
+      <div class="searchwrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" placeholder="What are you craving? e.g. paneer butter masala" autofocus autocomplete="off" aria-label="Dish name">
+      </div>
+      <button class="cta" id="go">Compare</button>
+    </form>
+    <div class="hints" id="hints">
+      <button type="button" class="hint">paneer butter masala</button>
+      <button type="button" class="hint">veg biryani</button>
+      <button type="button" class="hint">masala dosa</button>
+      <button type="button" class="hint">chicken biryani</button>
+      <button type="button" class="hint">margherita pizza</button>
+    </div>
+
+    <div id="status"></div>
+    <div id="out"></div>
+
+    <footer>
+      <span class="brand">Bite<em>Wise</em></span> · menu prices only: delivery fee, platform fee, taxes &amp; offers are <b>not</b> included, so this is never the final payable amount.<br>
+      Offers shown exactly as each platform returns them · data <b class="sw">Powered by Swiggy</b> · <b class="zo">Powered by Zomato</b>
+    </footer>
+  </main>
+
+<script>
+"use strict";
+const $ = (id) => document.getElementById(id);
+const form = $("form"), q = $("q"), go = $("go"), statusEl = $("status"), out = $("out");
+let lastData = null;
+let sortKey = "saving";
+let vegOnly = false;
+
+const PIN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>';
+
+$("hints").addEventListener("click", (e) => {
+  const hint = e.target.closest(".hint");
+  if (!hint) return;
+  q.value = hint.textContent.trim();
+  form.requestSubmit();
+});
+
+// sort + veg filter live inside #out, which is re-rendered — delegate.
+out.addEventListener("click", (e) => {
+  const sortBtn = e.target.closest("[data-sort]");
+  if (sortBtn) { sortKey = sortBtn.dataset.sort; render(false); return; }
+  if (e.target.closest("[data-veg]")) { vegOnly = !vegOnly; render(false); }
+});
+
+const COOKING = ["Reading Swiggy's menus…", "Checking Zomato's kitchens…", "Matching restaurants across both apps…",
+                 "Making sure half and full portions aren't mixed up…", "Working out the difference…"];
+let cookTimer = null;
+
+function showSkeleton() {
+  out.classList.remove("still");
+  out.innerHTML = `<div class="cooking"><span class="spinner"></span><span id="cookmsg">${COOKING[0]}</span></div>
+    <div class="skel">${'<div class="skrow"></div>'.repeat(5)}</div>`;
+  let i = 0;
+  cookTimer = setInterval(() => {
+    const el = $("cookmsg");
+    if (el) el.textContent = COOKING[++i % COOKING.length];
+  }, 2600);
+}
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const query = q.value.trim();
+  if (!query) return;
+  history.replaceState(null, "", "?q=" + encodeURIComponent(query));
+  go.disabled = true;
+  statusEl.innerHTML = "";
+  showSkeleton();
+  try {
+    const res = await fetch("/api/compare?q=" + encodeURIComponent(query));
+    const body = await res.json();
+    if (!res.ok) throw new Error(body.error || res.statusText);
+    lastData = body;
+    statusEl.innerHTML = statusLine(body);
+    render(true);
+  } catch (err) {
+    statusEl.innerHTML = "";
+    out.innerHTML = `<div class="banner error"><strong>Something went wrong.</strong> ${richText(err.message)}</div>`;
+  } finally {
+    clearInterval(cookTimer);
+    go.disabled = false;
+  }
+});
+
+// ---------- formatting helpers ----------
+function esc(s) { const d = document.createElement("span"); d.textContent = s ?? ""; return d.innerHTML; }
+/** Escape, then show `commands` from server messages as code. */
+function richText(s) { return esc(s).replace(/`([^`]+)`/g, "<code>$1</code>"); }
+function short(a) { return a ? a.split(",").slice(0, 2).join(",") : ""; }
+function rupee(p) { return p == null ? "—" : "₹" + p; }
+function veg(v) { return v === true ? '<span class="vdot veg" title="Veg"></span>' : v === false ? '<span class="vdot nonveg" title="Non-veg"></span>' : ""; }
+/** A 0 rating means "not rated" on these platforms. */
+function stars(r) { return r != null && r > 0 ? '<span class="star">★</span> ' + Number(r).toFixed(1) : null; }
+function eta(m) { return m != null ? m + " min" : null; }
+
+/** Which address each app searched, and how sure we are they're the same place. */
+function statusLine(b) {
+  const parts = [];
+  if (b.swiggyAddress) parts.push(`<span class="pl sw">Swiggy</span> ${esc(short(b.swiggyAddress))}`);
+  if (b.zomatoAddress) parts.push(`<span class="pl zo">Zomato</span> ${esc(short(b.zomatoAddress))}`);
+  if (!parts.length) return "";
+  const am = b.addressMatch;
+  const conf = am && am.method !== "sample" && b.swiggyAddress && b.zomatoAddress
+    ? `<span class="conf" title="How sure BiteWise is that both addresses are the same place">same place · ${am.confidence.toFixed(2)}</span>`
+    : "";
+  return PIN + parts.map((p) => `<span class="addr">${p}</span>`).join('<span class="sep">·</span>') + conf;
+}
+
+// ---------- sorting ----------
+const lowest = (...v) => { const xs = v.filter((x) => x != null); return xs.length ? Math.min(...xs) : Infinity; };
+const highest = (...v) => { const xs = v.filter((x) => x != null && x > 0); return xs.length ? Math.max(...xs) : -1; };
+const SORTS = [
+  ["saving", "Biggest saving"],
+  ["price", "Lowest price"],
+  ["rating", "Top rated"],
+  ["eta", "Fastest"],
+];
+const PAIR_SORT = {
+  saving: (a, b) => Math.abs(b.priceDiff ?? 0) - Math.abs(a.priceDiff ?? 0),
+  price: (a, b) => lowest(a.swiggyPrice, a.zomatoPrice) - lowest(b.swiggyPrice, b.zomatoPrice),
+  rating: (a, b) => highest(b.swiggyRating, b.zomatoRating) - highest(a.swiggyRating, a.zomatoRating),
+  eta: (a, b) => lowest(a.swiggyEta, a.zomatoEta) - lowest(b.swiggyEta, b.zomatoEta),
+};
+const SINGLE_SORT = {
+  saving: (a, b) => lowest(a.price) - lowest(b.price), // no saving on one platform → cheapest first
+  price: (a, b) => lowest(a.price) - lowest(b.price),
+  rating: (a, b) => highest(b.rating) - highest(a.rating),
+  eta: (a, b) => lowest(a.etaMinutes) - lowest(b.etaMinutes),
+};
+
+/** Apply veg filter + current sort to every section; count what the filter hid. */
+function view(d) {
+  let nonVeg = 0, unknown = 0;
+  const keep = (x) => {
+    if (!vegOnly || x.isVeg === true) return true;
+    if (x.isVeg === false) nonVeg++; else unknown++;
+    return false;
+  };
+  return {
+    matched: d.matched.filter(keep).sort(PAIR_SORT[sortKey]),
+    possible: d.possible.filter(keep).sort(PAIR_SORT[sortKey]),
+    onlySwiggy: d.onlySwiggy.filter(keep).sort(SINGLE_SORT[sortKey]),
+    onlyZomato: d.onlyZomato.filter(keep).sort(SINGLE_SORT[sortKey]),
+    nonVeg, unknown,
+  };
+}
+
+// ---------- tables ----------
+function platformCell(cls, name, price, offer, rating, etaMin, url, cheap) {
+  const meta = [stars(rating), eta(etaMin)].filter(Boolean).join(" · ");
+  return `<td class="pcell ${cls}${cheap ? " cheap" : ""}">
+      <span class="mlabel"><span class="pdot" style="background:var(--${cls === "sw" ? "swiggy" : "zomato"})"></span>${name}${cheap ? '<span class="cheaper">cheaper</span>' : ""}</span>
+      <span class="pprice">${rupee(price)}</span>
+      ${offer ? `<span class="offer">${esc(offer)}</span>` : ""}
+      ${meta ? `<span class="meta">${meta}</span>` : ""}
+      ${url ? `<a class="open" href="${esc(url)}" target="_blank" rel="noopener">Open in ${name} ↗</a>` : ""}
+    </td>`;
+}
+
+function saveChip(r) {
+  if (r.priceDiff == null) return '<span class="chip same">—</span>';
+  if (r.priceDiff === 0) return '<span class="chip same">Same price</span>';
+  const who = r.cheaperOn === "swiggy" ? "Swiggy" : "Zomato";
+  return `<span class="chip save">Save ₹${Math.abs(r.priceDiff)} on ${who}</span>`;
+}
+
+function compareTable(rows) {
+  const body = rows.map((r, i) => {
+    const zomatoDiffers = r.zomatoItem !== r.item || r.zomatoRestaurant !== r.restaurant;
+    return `
+    <tr style="animation-delay:${Math.min(i * 50, 500)}ms">
+      <td class="dishcell">
+        <div class="dname">${veg(r.isVeg)}${esc(r.item)}</div>
+        <div class="rname">${esc(r.restaurant)}</div>
+        ${zomatoDiffers ? `<span class="subitem">on Zomato: ${esc(r.zomatoItem)}${r.zomatoRestaurant !== r.restaurant ? " · " + esc(r.zomatoRestaurant) : ""}</span>` : ""}
+      </td>
+      ${platformCell("sw", "Swiggy", r.swiggyPrice, r.swiggyOffer, r.swiggyRating, r.swiggyEta, r.swiggyUrl, r.cheaperOn === "swiggy")}
+      ${platformCell("zo", "Zomato", r.zomatoPrice, r.zomatoOffer, r.zomatoRating, r.zomatoEta, r.zomatoUrl, r.cheaperOn === "zomato")}
+      <td class="savecell">${saveChip(r)}</td>
+      <td class="matchcell"><div class="confcell" title="How sure BiteWise is that these are the same dish at the same restaurant">
+        <span class="conflabel">match</span><span class="meter"><i style="width:${Math.round(r.confidence * 100)}%"></i></span>${r.confidence.toFixed(2)}
+      </div></td>
+    </tr>`;
+  }).join("");
+  return `<div class="tablewrap"><table class="cmp">
+    <thead><tr><th>Dish</th>
+    <th><span class="pdot" style="background:var(--swiggy)"></span>Swiggy</th>
+    <th><span class="pdot" style="background:var(--zomato)"></span>Zomato</th>
+    <th>You save</th><th>Match</th></tr></thead>
+    <tbody>${body}</tbody></table></div>`;
+}
+
+function onlyTable(results) {
+  const rows = results.map((r, i) => `
+    <tr style="animation-delay:${Math.min(i * 40, 450)}ms">
+      <td class="dishcell">
+        <div class="dname">${veg(r.isVeg)}${esc(r.item)}${r.inStock === false ? '<span class="tag">sold out</span>' : ""}</div>
+        <div class="rname">${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.restaurant)} ↗</a>` : esc(r.restaurant)}</div>
+      </td>
+      <td class="pcell"><span class="pprice">${rupee(r.price)}</span>${r.offerText ? `<span class="offer">${esc(r.offerText)}</span>` : ""}</td>
+      <td class="rate">${stars(r.rating) ?? '<span class="na">—</span>'}</td>
+      <td class="eta">${eta(r.etaMinutes) ?? '<span class="na">—</span>'}</td>
+    </tr>`).join("");
+  return `<div class="tablewrap"><table class="only">
+    <thead><tr><th>Dish</th><th>Menu price</th><th>Rating</th><th>Delivery</th></tr></thead>
+    <tbody>${rows}</tbody></table></div>`;
+}
+
+// ---------- scoreboard + toolbar ----------
+function countUp(el, target, prefix) {
+  const dur = 750, t0 = performance.now();
+  (function tick(t) {
+    const k = Math.min(1, (t - t0) / dur), eased = 1 - Math.pow(1 - k, 3);
+    el.textContent = prefix + Math.round(target * eased);
+    if (k < 1) requestAnimationFrame(tick);
+  })(t0);
+}
+
+function scoreboard(v) {
+  const swCheaper = v.matched.filter(r => r.cheaperOn === "swiggy").length;
+  const zoCheaper = v.matched.filter(r => r.cheaperOn === "zomato").length;
+  const best = v.matched.reduce((m, r) => Math.max(m, Math.abs(r.priceDiff ?? 0)), 0);
+  return `<div class="score">
+      <div class="stat"><div class="n" data-n="${v.matched.length}">${v.matched.length}</div><div class="l">Dishes matched</div></div>
+      <div class="stat sw"><div class="n" data-n="${swCheaper}">${swCheaper}</div><div class="l">Cheaper on Swiggy</div></div>
+      <div class="stat zo"><div class="n" data-n="${zoCheaper}">${zoCheaper}</div><div class="l">Cheaper on Zomato</div></div>
+      <div class="stat gr"><div class="n" data-n="${best}" data-p="₹">₹${best}</div><div class="l">Biggest saving</div></div>
+    </div>`;
+}
+
+function toolbar(v) {
+  const hidden = [];
+  if (v.nonVeg) hidden.push(`${v.nonVeg} non-veg`);
+  if (v.unknown) hidden.push(`${v.unknown} whose veg status the platform didn't list`);
+  return `<div class="toolbar">
+      <div class="seg" role="group" aria-label="Sort results"><span class="seglabel">Sort</span>
+        ${SORTS.map(([k, label]) => `<button type="button" class="pill" data-sort="${k}" aria-pressed="${k === sortKey}">${label}</button>`).join("")}
+      </div>
+      <button type="button" class="pill veg" data-veg aria-pressed="${vegOnly}"><span class="vdot veg"></span>Veg only</button>
+    </div>
+    ${vegOnly && hidden.length ? `<p class="filternote">Veg only: hiding ${hidden.join(" and ")}.</p>` : ""}`;
+}
+
+// ---------- page ----------
+/** Error banner for one platform; adds a plain-language hint for known failures. */
+function platformError(name, message, otherShown) {
+  let hint = "";
+  if (/limit exceeded|rate limit|too many requests|\b429\b/i.test(message)) {
+    hint = ` ${name} limits how many requests one account can make${/hourly/i.test(message) ? " per hour" : ""}. Try again later; repeat searches within 5 minutes come from the local cache.`;
+  }
+  const sentence = /[.!?]$/.test(message.trim()) ? message.trim() : message.trim() + ".";
+  return `<div class="banner error"><strong>${name} couldn't load.</strong> ${richText(sentence)}${hint}${otherShown ? ` <span class="aside">Showing ${otherShown} only.</span>` : ""}</div>`;
+}
+
+function render(animate) {
+  const d = lastData;
+  if (!d) return;
+  out.classList.toggle("still", !animate);
+
+  let html = "";
+  if (d.zomatoSample) html += `<div class="banner sample"><strong>Zomato: sample data.</strong> These are saved fixture prices, not live Zomato prices.</div>`;
+  if (d.addressMatch && d.addressMatch.method !== "sample" && (d.addressMatch.warning || d.addressMatch.confidence < 0.5)) {
+    html += `<div class="banner sample"><strong>Location check.</strong> ${esc(d.addressMatch.warning ?? `The two apps' addresses may not be the same place (confidence ${d.addressMatch.confidence.toFixed(2)}).`)}</div>`;
+  }
+  if (d.errors?.swiggy) html += platformError("Swiggy", d.errors.swiggy, d.errors?.zomato ? null : "Zomato");
+  if (d.errors?.zomato) html += platformError("Zomato", d.errors.zomato, d.errors?.swiggy ? null : "Swiggy");
+
+  const total = d.matched.length + d.possible.length + d.onlySwiggy.length + d.onlyZomato.length;
+  if (total === 0) {
+    if (!d.errors?.swiggy && !d.errors?.zomato) {
+      html += `<div class="empty">Nothing found for “${esc(d.query)}” near you. Try a simpler name, like “biryani”.</div>`;
+    }
+    out.innerHTML = html;
+    return;
+  }
+
+  const v = view(d);
+  html += scoreboard(v) + toolbar(v);
+
+  if (v.matched.length + v.possible.length + v.onlySwiggy.length + v.onlyZomato.length === 0) {
+    html += `<div class="empty">Nothing in these results is marked veg. Turn off Veg only to see all ${total}.</div>`;
+    out.innerHTML = html;
+    return;
+  }
+
+  if (v.matched.length) {
+    html += `<h2>Head to head <span class="count">${v.matched.length}</span></h2>
+      <p class="note">Same restaurant, same dish on both apps. Menu price only; the cheaper side is highlighted.</p>`
+      + compareTable(v.matched);
+  } else {
+    html += `<h2>Head to head</h2><p class="note">${d.matched.length
+      ? "No veg matches. Turn off Veg only to see them all."
+      : "No confident cross-platform matches for this dish. Scroll down for what each app has."}</p>`;
+  }
+  if (v.possible.length) {
+    html += `<h2>Possible matches <span class="count">${v.possible.length}</span></h2>
+      <p class="note">Below the confidence threshold: these could be different dishes or outlets, so they're shown but never merged.</p>`
+      + compareTable(v.possible);
+  }
+  if (v.onlySwiggy.length) html += `<h2><span class="hdot" style="background:var(--swiggy)"></span>Only on Swiggy <span class="count">${v.onlySwiggy.length}</span></h2>` + onlyTable(v.onlySwiggy);
+  if (v.onlyZomato.length) html += `<h2><span class="hdot" style="background:var(--zomato)"></span>Only on Zomato${d.zomatoSample ? " (sample)" : ""} <span class="count">${v.onlyZomato.length}</span></h2>` + onlyTable(v.onlyZomato);
+  out.innerHTML = html;
+
+  if (animate) {
+    out.querySelectorAll(".stat .n").forEach((el) => countUp(el, Number(el.dataset.n), el.dataset.p ?? ""));
+  }
+}
+
+// ?q=<dish> runs that search on load, so a search can be bookmarked or reloaded.
+const initialQuery = new URLSearchParams(location.search).get("q");
+if (initialQuery) { q.value = initialQuery; form.requestSubmit(); }
+</script>
+</body>
+</html>

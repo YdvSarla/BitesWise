@@ -1,0 +1,185 @@
+{
+ "_sample": true,
+ "note": "SAMPLE DATA: snapshot of live Zomato results taken 2026-11-14 near Sector 48, Gurugram. Stale; for PLATFORM_ZOMATO=mock offline mode only.",
+ "results": [
+  {
+   "restaurant": "Captain Sam's Pizza",
+   "item": "Margherita Pizza (7 Inch)",
+   "price": 75,
+   "rating": null,
+   "etaMinutes": 35,
+   "url": "https://www.zomato.com/order/22556939",
+   "offerText": null
+  },
+  {
+   "restaurant": "Domino's Pizza",
+   "item": "Margherita Pizza",
+   "price": 125,
+   "rating": null,
+   "etaMinutes": 25,
+   "url": "https://www.zomato.com/order/20175423",
+   "offerText": "20% OFF up to ₹50"
+  },
+  {
+   "restaurant": "La Pino'z Pizza",
+   "item": "Margherita Pizza Personal Giant Slice (22.5 Cm)",
+   "price": 164,
+   "rating": null,
+   "etaMinutes": 25,
+   "url": "https://www.zomato.com/order/21049897",
+   "offerText": "Flat ₹60 OFF"
+  },
+  {
+   "restaurant": "La Pino'z Pizza",
+   "item": "Margherita Pizza",
+   "price": 178,
+   "rating": null,
+   "etaMinutes": 25,
+   "url": "https://www.zomato.com/order/21049897",
+   "offerText": "Flat ₹60 OFF"
+  },
+  {
+   "restaurant": "Savory Bites",
+   "item": "Margherita pizza",
+   "price": 125,
+   "rating": null,
+   "etaMinutes": 40,
+   "url": "https://www.zomato.com/order/22923982",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": null
+  },
+  {
+   "restaurant": "Captain Sam's Pizza",
+   "item": "Margherita Pizza (9 Inch)",
+   "price": 129,
+   "rating": null,
+   "etaMinutes": 35,
+   "url": "https://www.zomato.com/order/22556939",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": null
+  },
+  {
+   "restaurant": "Pizza Hut",
+   "item": "Margherita Pizza",
+   "price": 149,
+   "rating": null,
+   "etaMinutes": 25,
+   "url": "https://www.zomato.com/order/19807704",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "50% OFF up to ₹100"
+  },
+  {
+   "restaurant": "Pizza Hut",
+   "item": "Margherita",
+   "price": 149,
+   "rating": null,
+   "etaMinutes": 25,
+   "url": "https://www.zomato.com/order/19807704",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "50% OFF up to ₹100"
+  },
+  {
+   "restaurant": "Captain Sam's Pizza",
+   "item": "Margherita Pizza 12''",
+   "price": 219,
+   "rating": null,
+   "etaMinutes": 35,
+   "url": "https://www.zomato.com/order/22556939",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": null
+  },
+  {
+   "restaurant": "Pizza Hut",
+   "item": "Margherita Ultimate Cheese Pizza",
+   "price": 228,
+   "rating": null,
+   "etaMinutes": 25,
+   "url": "https://www.zomato.com/order/19807704",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "50% OFF up to ₹100"
+  },
+  {
+   "restaurant": "Pizza Galleria",
+   "item": "Queen Margherita Pizza",
+   "price": 229,
+   "rating": null,
+   "etaMinutes": 45,
+   "url": "https://www.zomato.com/order/21120715",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "40% OFF up to ₹60"
+  },
+  {
+   "restaurant": "Domino's Pizza",
+   "item": "Double Cheese Margherita Pizza",
+   "price": 229,
+   "rating": null,
+   "etaMinutes": 25,
+   "url": "https://www.zomato.com/order/20175423",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "20% OFF up to ₹50"
+  },
+  {
+   "restaurant": "Domino's Pizza",
+   "item": "Double Cheese Margherita Pizza – Cheese Burst (Reg)",
+   "price": 311,
+   "rating": null,
+   "etaMinutes": 25,
+   "url": "https://www.zomato.com/order/20175423",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "20% OFF up to ₹50"
+  },
+  {
+   "restaurant": "Pizza Wings",
+   "item": "Cheese Margherita Pizza",
+   "price": 489,
+   "rating": null,
+   "etaMinutes": 40,
+   "url": "https://www.zomato.com/order/21132783",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "60% OFF up to ₹120"
+  },
+  {
+   "restaurant": "Pizza Wings",
+   "item": "Double Cheeese Margherita Pizza",
+   "price": 599,
+   "rating": null,
+   "etaMinutes": 40,
+   "url": "https://www.zomato.com/order/21132783",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "60% OFF up to ₹120"
+  },
+  {
+   "restaurant": "Pizza Wings",
+   "item": "Cheese Margherita Cheese Burst Pizza",
+   "price": 599,
+   "rating": null,
+   "etaMinutes": 40,
+   "url": "https://www.zomato.com/order/21132783",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "60% OFF up to ₹120"
+  },
+  {
+   "restaurant": "Pizza Wings",
+   "item": "Double Cheese Margherita Cheese Burst Pizza",
+   "price": 689,
+   "rating": null,
+   "etaMinutes": 40,
+   "url": "https://www.zomato.com/order/21132783",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "60% OFF up to ₹120"
+  }
+ ]
+}

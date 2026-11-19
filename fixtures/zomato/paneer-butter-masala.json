@@ -1,0 +1,251 @@
+{
+ "_sample": true,
+ "note": "SAMPLE DATA: snapshot of live Zomato results taken 2026-11-14 near Sector 48, Gurugram. Stale; for PLATFORM_ZOMATO=mock offline mode only.",
+ "results": [
+  {
+   "restaurant": "Prince Ki Rasoi",
+   "item": "Paneer Butter Masala",
+   "price": 290,
+   "rating": null,
+   "etaMinutes": 60,
+   "url": "https://www.zomato.com/order/2089",
+   "offerText": null
+  },
+  {
+   "restaurant": "Food Island Kakoos Kitchen, Sector 50",
+   "item": "Paneer Butter Masala",
+   "price": 199,
+   "rating": null,
+   "etaMinutes": null,
+   "url": "https://www.zomato.com/order/20787118",
+   "offerText": null
+  },
+  {
+   "restaurant": "Punjabi Angithi By Vegorama Group",
+   "item": "Paneer Butter Masala",
+   "price": 249,
+   "rating": null,
+   "etaMinutes": 45,
+   "url": "https://www.zomato.com/order/22450145",
+   "offerText": "50% OFF up to ₹125"
+  },
+  {
+   "restaurant": "Samrat Sweets",
+   "item": "Paneer Butter Masala",
+   "price": 260,
+   "rating": null,
+   "etaMinutes": 40,
+   "url": "https://www.zomato.com/order/19154124",
+   "offerText": null
+  },
+  {
+   "restaurant": "Sushanat Foji Dhaba",
+   "item": "Butter Masala Roti",
+   "price": 60,
+   "rating": null,
+   "etaMinutes": 40,
+   "url": "https://www.zomato.com/order/19224690",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "50% OFF up to ₹125"
+  },
+  {
+   "restaurant": "Kanha Ki Chhavi",
+   "item": "Paneer Butter Masala",
+   "price": 99,
+   "rating": null,
+   "etaMinutes": 45,
+   "url": "https://www.zomato.com/order/22018521",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "Flat ₹60 OFF"
+  },
+  {
+   "restaurant": "Kanha Ki Chhavi",
+   "item": "Paneer Chaap Masala",
+   "price": 125,
+   "rating": null,
+   "etaMinutes": 45,
+   "url": "https://www.zomato.com/order/22018521",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "Flat ₹60 OFF"
+  },
+  {
+   "restaurant": "The Indian Stories – Comfort North Indian Meals",
+   "item": "Paneer Butter Masala Mini Meal",
+   "price": 189,
+   "rating": null,
+   "etaMinutes": 40,
+   "url": "https://www.zomato.com/order/21322390",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "50% OFF up to ₹100"
+  },
+  {
+   "restaurant": "Food Island Kakoos Kitchen, Sector 50",
+   "item": "Paneer Tikka Masala",
+   "price": 199,
+   "rating": null,
+   "etaMinutes": null,
+   "url": "https://www.zomato.com/order/20787118",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": null
+  },
+  {
+   "restaurant": "Sushanat Foji Dhaba",
+   "item": "Paneer Butter Masala",
+   "price": 234,
+   "rating": null,
+   "etaMinutes": 40,
+   "url": "https://www.zomato.com/order/19224690",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "50% OFF up to ₹125"
+  },
+  {
+   "restaurant": "The Indian Stories – Comfort North Indian Meals",
+   "item": "Paneer Butter Masala",
+   "price": 249,
+   "rating": null,
+   "etaMinutes": 40,
+   "url": "https://www.zomato.com/order/21322390",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "50% OFF up to ₹100"
+  },
+  {
+   "restaurant": "The Indian Stories – Comfort North Indian Meals",
+   "item": "Soya Butter Masala",
+   "price": 249,
+   "rating": null,
+   "etaMinutes": 40,
+   "url": "https://www.zomato.com/order/21322390",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "50% OFF up to ₹100"
+  },
+  {
+   "restaurant": "The Indian Stories – Comfort North Indian Meals",
+   "item": "Paneer Butter Masala And Chawal",
+   "price": 249,
+   "rating": null,
+   "etaMinutes": 40,
+   "url": "https://www.zomato.com/order/21322390",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "50% OFF up to ₹100"
+  },
+  {
+   "restaurant": "Punjabi Angithi By Vegorama Group",
+   "item": "Butter Chaap Masala",
+   "price": 259,
+   "rating": null,
+   "etaMinutes": 45,
+   "url": "https://www.zomato.com/order/22450145",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "50% OFF up to ₹125"
+  },
+  {
+   "restaurant": "Samrat Sweets",
+   "item": "Paneer Butter Masala Dosa",
+   "price": 260,
+   "rating": null,
+   "etaMinutes": 40,
+   "url": "https://www.zomato.com/order/19154124",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": null
+  },
+  {
+   "restaurant": "Punjabi Angithi By Vegorama Group",
+   "item": "Tawa Paneer Masala",
+   "price": 269,
+   "rating": null,
+   "etaMinutes": 45,
+   "url": "https://www.zomato.com/order/22450145",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "50% OFF up to ₹125"
+  },
+  {
+   "restaurant": "Rozi Roti",
+   "item": "Paneer Butter Masala",
+   "price": 279,
+   "rating": null,
+   "etaMinutes": 30,
+   "url": "https://www.zomato.com/order/21028098",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "50% OFF up to ₹100"
+  },
+  {
+   "restaurant": "Rozi Roti",
+   "item": "Chaap Butter Masala",
+   "price": 279,
+   "rating": null,
+   "etaMinutes": 30,
+   "url": "https://www.zomato.com/order/21028098",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "50% OFF up to ₹100"
+  },
+  {
+   "restaurant": "Samrat Sweets",
+   "item": "Paneer Punjabi Masala",
+   "price": 280,
+   "rating": null,
+   "etaMinutes": 40,
+   "url": "https://www.zomato.com/order/19154124",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": null
+  },
+  {
+   "restaurant": "Samrat Sweets",
+   "item": "Paneer Mushroom Masala",
+   "price": 280,
+   "rating": null,
+   "etaMinutes": 40,
+   "url": "https://www.zomato.com/order/19154124",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": null
+  },
+  {
+   "restaurant": "Samrat Sweets",
+   "item": "Butter Masala Dosa",
+   "price": 300,
+   "rating": null,
+   "etaMinutes": 40,
+   "url": "https://www.zomato.com/order/19154124",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": null
+  },
+  {
+   "restaurant": "Punjabi Angithi By Vegorama Group",
+   "item": "Mumtaz Paneer Butter Masala",
+   "price": 325,
+   "rating": null,
+   "etaMinutes": 45,
+   "url": "https://www.zomato.com/order/22450145",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": "50% OFF up to ₹125"
+  },
+  {
+   "restaurant": "Food Island Kakoos Kitchen, Sector 50",
+   "item": "Masala Paneer Tikka",
+   "price": 369,
+   "rating": null,
+   "etaMinutes": null,
+   "url": "https://www.zomato.com/order/20787118",
+   "isVeg": true,
+   "inStock": true,
+   "offerText": null
+  }
+ ]
+}

@@ -1,0 +1,29 @@
+{
+  "name": "bitewise",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "BiteWise — Eat Smart. Spend Less. Read-only Swiggy vs Zomato dish price comparison (official MCP servers)",
+  "engines": {
+    "node": ">=20.12"
+  },
+  "scripts": {
+    "login": "tsx src/cli/login.ts",
+    "login:zomato": "tsx src/cli/login-zomato.ts",
+    "tools": "tsx src/cli/tools.ts",
+    "search": "tsx src/cli/search.ts",
+    "compare": "tsx src/cli/compare.ts",
+    "test": "tsx --test src/matching.test.ts",
+    "web": "tsx src/server.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.21.0",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  }
+}
